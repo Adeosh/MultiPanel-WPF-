@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="MultiPanel_WPF_.MVVM.View.MusicStoreView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MultiPanel_WPF_.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="668" d:DesignWidth="854">
+    <Grid>
+
+        <ListView x:Name="listAlbum" Margin="0,0,15,0" Height="386" VerticalAlignment="Top" 
+                  Background="#2e4450" Foreground="#d7baad"
+                  SelectionChanged="listAlbum_SelectionChanged">
+
+            <ListView.View>
+
+                <GridView ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}" x:Name="dgAlbum">
+                    <GridViewColumn Header="№" Width="40" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Название Альбома" Width="160" DisplayMemberBinding="{Binding AlbumTitle}"/>
+                    <GridViewColumn Header="Исполнитель" Width="120" DisplayMemberBinding="{Binding Artist}"/>
+                    <GridViewColumn Header="Год" Width="40" DisplayMemberBinding="{Binding Year}"/>
+                    <GridViewColumn Header="Ссылка на Обложку" Width="500" DisplayMemberBinding="{Binding ImageLink}"/>
+                </GridView>
+
+            </ListView.View>
+
+        </ListView>
+
+        <Label x:Name="lblAlbum" Foreground="#d7baad" Content="Название Альбома" HorizontalAlignment="Left" Margin="72,400,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblArtist" Foreground="#d7baad" Content="Исполнитель" HorizontalAlignment="Left" Margin="263,400,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblYear" Foreground="#d7baad" Content="Год выпуска" HorizontalAlignment="Left" Margin="86,480,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblImage" Foreground="#d7baad" Content="Ссылка на Обложку" HorizontalAlignment="Left" Margin="244,480,0,0" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="tbAlbum" Text="{Binding ElementName=listAlbum, Path=SelectedItem.AlbumTitle}" 
+                 Background="#2e4450" Foreground="#d7baad" HorizontalAlignment="Left" 
+                 Margin="50,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35"/>
+        <TextBox x:Name="tbArtist" Text="{Binding ElementName=listAlbum, Path=SelectedItem.Artist}"
+                 Background="#2e4450" Foreground="#d7baad" HorizontalAlignment="Left"
+                 Margin="229,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35"/>
+        <ComboBox x:Name="cbYear" Style="{DynamicResource ComboBoxTuning}" Text="{Binding ElementName=listAlbum, Path=SelectedItem.Year}"
+                  HorizontalAlignment="Left" Margin="50,520,0,0" VerticalAlignment="Top" Width="150" Height="35">
+
+        </ComboBox>
+        <TextBox x:Name="tbImage" Text="{Binding ElementName=listAlbum, Path=SelectedItem.ImageLink}" 
+                 Background="#2e4450" Foreground="#d7baad" HorizontalAlignment="Left" 
+                 Margin="229,520,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="35"/>
+
+        <Button x:Name="btnInsert" Style="{DynamicResource RoundCorner}" Margin="90,200,0,0" Width="100" Height="40" Click="btnInsert_Click">
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Добавить</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnUpdate" Style="{DynamicResource RoundCorner}" Margin="90,320,0,0" Width="100" Height="40" Click="btnUpdate_Click">
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Обновить</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnDelete" Style="{DynamicResource RoundCorner}" Margin="90,440,0,0" Width="100" Height="40" Click="btnDelete_Click">
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Удалить</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button x:Name="btnClear" Style="{DynamicResource RoundCorner}" Margin="90,560,0,0" Width="100" Height="40" Click="btnClear_Click">
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Очистить</TextBlock>
+            </StackPanel>
+        </Button>
+        
+        <Border BorderBrush="#2e4450" BorderThickness="5" Margin="520,380,0,0" Width="230" Height="230">
+            <Image x:Name="imgAlbum" Height="230" Width="230"/>
+        </Border>
+
+    </Grid>
+</UserControl>

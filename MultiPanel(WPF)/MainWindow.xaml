@@ -1,0 +1,149 @@
+﻿<Window x:Class="MultiPanel_WPF_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiPanel_WPF_"
+        xmlns:viewModel="clr-namespace:MultiPanel_WPF_.MVVM.ViewModel"
+        xmlns:view="clr-namespace:MultiPanel_WPF_.MVVM.View"
+        mc:Ignorable="d"
+        AllowsTransparency="True" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="MultiPanel" 
+        Height="768" Width="1024" 
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        MouseLeftButtonDown="movingApp_MouseLeftButtonDown">
+
+    <Window.Resources>
+        <DataTemplate x:Name="homeViewTemplate" DataType="{x:Type viewModel:HomeViewModel}">
+            <view:HomeView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="calcViewTemplate" DataType="{x:Type viewModel:CalculatorViewModel}">
+            <view:CalculatorView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="spInvViewTemplate" DataType="{x:Type viewModel:SpaceInvadersViewModel}">
+            <view:SpaceInvadersView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="pacmanViewTemplate" DataType="{x:Type viewModel:PacmanViewModel}">
+            <view:PacmanView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="curconvViewTemplate" DataType="{x:Type viewModel:CurConverterViewModel}">
+            <view:CurConverterView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="musstoreViewTemplate" DataType="{x:Type viewModel:MusicStoreViewModel}">
+            <view:MusicStoreView DataContext="{Binding}"/>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border Background="#527c88"
+            CornerRadius="20">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200">
+                </ColumnDefinition>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+
+            <TextBlock Text="Мультипанель"
+                       Grid.Row="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Foreground="#d7baad"
+                       FontSize="22"
+                       Margin="20,0,0,0"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="0">
+
+
+
+                <RadioButton Content="-Главная"
+                             Height="50"
+                             Foreground="#d7baad"
+                             FontSize="14"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding HomeViewCommand}"
+                             IsChecked="True"/>
+
+                <Label Height="50" Style="{StaticResource TitleLabel}" Content="Инструменты"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"/>
+
+                <RadioButton Content="-Калькулятор"
+                             Height="50"
+                             Foreground="#d7baad"
+                             FontSize="14"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding CaclViewCommand}"/>
+                
+                <RadioButton Content="-Конвертер валют"
+                             Height="50"
+                             Foreground="#d7baad"
+                             FontSize="14"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding CurConvViewCommand}"/>
+
+                <Label Height="50" Style="{StaticResource TitleLabel}" Content="Развлечения"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"/>
+
+                <RadioButton Content="-Музыкальная Лавка"
+                             Height="50"
+                             Foreground="#d7baad"
+                             FontSize="14"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding MusStoreViewCommand}"/>
+
+                <Label Height="50" Style="{StaticResource TitleLabel}" Content="Игры"
+                       HorizontalContentAlignment="Center"
+                       VerticalContentAlignment="Center"/>
+
+                <RadioButton Content="-Space Invaders"
+                             Height="50"
+                             Foreground="#d7baad"
+                             FontSize="14"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding SpInvViewCommand}"/>
+
+                <RadioButton Content="-Pacman"
+                             Height="50"
+                             Foreground="#d7baad"
+                             FontSize="14"
+                             Style="{StaticResource MenuButton}"
+                             Command="{Binding PacmanViewCommand}"/>
+
+            </StackPanel>
+
+            <Label Name="closeApp" Style="{StaticResource PanelBtnLabel}"
+                   Grid.Column="1"
+                   MouseLeftButtonDown="closeApp_MouseLeftButtonDown" HorizontalAlignment="Left" 
+                   Margin="767,0,0,0">X</Label>
+            <Label Name="hideApp" Style="{StaticResource PanelBtnLabel}"
+                   Grid.Column="1"
+                   MouseLeftButtonDown="hideApp_MouseLeftButtonDown" HorizontalAlignment="Left"
+                   VerticalContentAlignment="Top"
+                   Margin="744,-3,0,0">_</Label>
+
+            <ContentControl Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10"
+                            Content="{Binding CurrentView}"/>
+            
+        </Grid>
+        
+    </Border>
+    
+</Window>

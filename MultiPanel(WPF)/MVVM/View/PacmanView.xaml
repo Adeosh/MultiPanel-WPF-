@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="MultiPanel_WPF_.MVVM.View.PacmanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MultiPanel_WPF_.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="668" d:DesignWidth="854">
+    
+    <StackPanel>
+        
+        <TextBlock Text="Pacman"
+                   Foreground="#89dee2"
+                   FontSize="28"
+                   HorizontalAlignment="Left"
+                   Margin="40,10,0,20"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Margin="35,0,0,10">
+            <Border Width="400"
+                    Height="200">
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#17946e" Offset="0.0"/>
+                        <GradientStop Color="#afcac2" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="10"
+                                       RadiusY="10"
+                                       Rect="0,0,400,200"/>
+                </Border.Clip>
+
+                <Grid>
+                    <StackPanel>
+                        <TextBlock Text="Печеньки..."
+                                   Foreground="#89dee2"
+                                   FontSize="28"
+                                   Margin="20,10,10,0"/>
+
+                        <TextBlock Text="Много печенек"
+                                   Foreground="#d7baad"
+                                   FontSize="18"
+                                   Margin="20,10,10,0"/>
+
+                    </StackPanel>
+
+                    <Image Width="100"
+                               Height="100"
+                               Source="/Images/Pacman/pacman.png"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Bottom" Margin="10,20,20,10" RenderTransformOrigin="0.5,0.5"
+                               >
+                        <Image.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-35.745"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Image.RenderTransform>
+                    </Image>
+
+                    <Image Width="250"
+                               Height="250"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Bottom" Margin="0,0,0,-60"
+                               />
+
+                </Grid>
+
+            </Border>
+
+            <Border Width="280"
+                    Height="200"
+                    CornerRadius="10,10,10,10"
+                    Margin="45,0,0,0">
+
+                <Border.Background>
+                    <ImageBrush Stretch="Fill" ImageSource="/Images/Pacman/screenshot2.png"/>
+                </Border.Background>
+
+            </Border>
+            
+        </StackPanel>
+
+        <StackPanel>
+
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="Margin" Value="15,0,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock Text="Описание"
+                       Foreground="#89dee2"
+                       FontSize="20"
+                       HorizontalAlignment="Left"
+                       Margin="40,0,0,10"/>
+
+            <Label Height="100" Style="{StaticResource DescriptionLabel}" >
+                <AccessText TextWrapping="Wrap">
+                    Аркадная видеоигра, разработанная японской компанией Namco и вышедшая в 1980 году. 
+                    Задача игрока - управляя Пакманом, съесть все печеньки в лабиринте,
+                    избегая встречи с привидениями, которые гоняются за героем. 
+                </AccessText>
+            </Label>
+
+            <Label Height="80" Style="{StaticResource DescriptionLabel}" >
+                <AccessText TextWrapping="Wrap">
+                    Pac-Man был создан японским геймдизайнером Тору Иватани. 
+                    Внешний вид Pac-Man'а — округлённый иероглиф кути, который символизирует поедание, 
+                    так как основная часть гемплея Pac-Man'а — именно поедать объекты.
+                </AccessText>
+            </Label>
+
+            <Label Height="60" Style="{StaticResource DescriptionLabel}" >
+                <AccessText TextWrapping="Wrap">
+                    Изначально игра называлась Puck-Man; однако «вандалы» часто заменяли «P» на «F»,
+                    в результате чего первая часть названия легко становилась ругательством: «Fuck».
+                </AccessText>
+            </Label>
+
+            <Button Style="{DynamicResource RoundCorner}" Margin="580,20,0,0" Click="Button_Click">
+                <StackPanel Orientation="Horizontal">
+                    <ContentControl Width="15" Height="15" Margin="4" 
+                                    Content="{StaticResource IconTriangle}"/>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">Play</TextBlock>
+                </StackPanel>
+            </Button>
+
+        </StackPanel>
+
+    </StackPanel>
+    
+</UserControl>

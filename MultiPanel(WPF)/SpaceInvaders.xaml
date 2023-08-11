@@ -1,0 +1,35 @@
+﻿<Window x:Class="MultiPanel_WPF_.SpaceInvaders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiPanel_WPF_"
+        mc:Ignorable="d"
+        AllowsTransparency="True" 
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="Space Invaders" 
+        Height="768" Width="1024" 
+        WindowStartupLocation="CenterScreen"
+        MouseLeftButtonDown="movingApp_MouseLeftButtonDown">
+
+    <Window.Background>
+        <ImageBrush ImageSource="Images\SpaceInvaders\space.jpg"/>
+    </Window.Background>
+
+    <Canvas Name="myCanvas" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp">
+
+        <Label Name="enemiesLeft" Foreground="#d7baad" FontSize="16" FontWeight="ExtraBold">Захватчиков осталось: 0</Label>
+
+        <Rectangle Name="player" Fill="White" Height="65" Width="56" Canvas.Left="484" Canvas.Top="693"/>
+
+        <Label Name="closeApp" Style="{StaticResource PanelBtnLabel}"
+                   Grid.Column="1"
+                   MouseLeftButtonDown="closeApp_MouseLeftButtonDown" HorizontalAlignment="Left" Canvas.Left="990" Canvas.Top="-3">X</Label>
+        <Label Name="hideApp" Style="{StaticResource PanelBtnLabel}"
+                   Grid.Column="1"
+                   MouseLeftButtonDown="hideApp_MouseLeftButtonDown" HorizontalAlignment="Left"
+                   VerticalContentAlignment="Top" Canvas.Left="965" Canvas.Top="-5">_</Label>
+
+    </Canvas>
+</Window>
