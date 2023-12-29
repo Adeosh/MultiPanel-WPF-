@@ -1,5 +1,5 @@
-Многофункцианальная панель построенная на платформе WPF(с использованием MVVM паттерна)
-  - Включает в себя главное меню с возможнностью рамещения рекламы или другого контента
+Многофункциона́льная панель построенная на платформе WPF(с использованием MVVM паттерна)
+  - Включает в себя главное меню с возможностью размещения рекламы или другого контента
   - Инструменты :
      - Калькулятор
      - Конвертер валют
@@ -8,12 +8,12 @@
     - Space Invaders
     - Pacman
    
-A multifunctional panel built on the WPF platform (using the MVVM pattern)
- - Includes the main menu with the possibility of placing ads or other content
- - Tools :
-   - Calculator
-   - Currency Converter
- - Music shop
- - Games
-   - Space Invaders
-   - Pacman
+Multifunctional panel built on the WPF platform (using MVVM pattern)
+  - Includes a main menu with the ability to place ads or other content
+  - Tools :
+    - Calculator
+    - Currency Converter
+  - Music store
+  - Games
+    - Space Invaders
+    - Pacman
